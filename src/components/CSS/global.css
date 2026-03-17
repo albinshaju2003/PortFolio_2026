@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700;900&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --teal: #0A7E8C;
+  --teal-light: #0D9BA8;
+  --teal-glow: rgba(10, 126, 140, 0.22);
+  --teal-border: rgba(10, 126, 140, 0.25);
+
+  --ink: #1A1A2E;
+  --ink-mid: #4A4A6A;
+  --ink-light: #8A8AAA;
+
+  --surface: #FFFFFF;
+  --bg: #F8F9FC;
+  --bg-alt: #EFF1F8;
+
+  --gold: #C4933F;
+
+  --lilac: #D4BEE4;
+  --purple-deep: #140624;
+  --purple-mid: #1E0A30;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0014;
+  color: #F0E6FF;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Light sections override */
+.about-section,
+.skills-section,
+.projects-section {
+  background: #FAFBFF;
+  color: var(--ink);
+}
+
+button {
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}

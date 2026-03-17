@@ -1,0 +1,218 @@
+/* ═══════════════════════════════════════════
+   CUSTOM CURSOR — Extreme Cosmic System
+   All fixed, pointer-events:none, z:99999+
+═══════════════════════════════════════════ */
+
+*, *::before, *::after { cursor: none !important; }
+
+/* ── SHARED BASE ── */
+.cc-dot,
+.cc-ring,
+.cc-ring2,
+.cc-ring3,
+.cc-chroma,
+.cc-trail,
+.cc-burst,
+.cc-label {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  will-change: transform;
+  transform: translate(-50%, -50%);
+}
+
+/* ══════════════════
+   CORE DOT
+══════════════════ */
+.cc-dot {
+  width: 10px;
+  height: 10px;
+  background: #FFFFFF;
+  z-index: 999999;
+  box-shadow:
+    0 0 6px  rgba(255, 255, 255, 1),
+    0 0 14px rgba(212, 190, 228, 0.9),
+    0 0 28px rgba(155, 126, 189, 0.6),
+    0 0 50px rgba(155, 126, 189, 0.2);
+  mix-blend-mode: screen;
+}
+
+/* ══════════════════
+   CHROMATIC GHOSTS
+══════════════════ */
+.cc-chroma {
+  width: 8px;
+  height: 8px;
+  z-index: 999996;
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+.cc-chroma-r {
+  background: #FF6BFF;
+  box-shadow: 0 0 12px rgba(255, 107, 255, 0.8), 0 0 24px rgba(255, 107, 255, 0.3);
+}
+.cc-chroma-b {
+  background: #6BFFFF;
+  box-shadow: 0 0 12px rgba(107, 255, 255, 0.8), 0 0 24px rgba(107, 255, 255, 0.3);
+}
+
+/* ══════════════════
+   RING 1 — inner spinning
+══════════════════ */
+.cc-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(212, 190, 228, 0.55);
+  background: transparent;
+  z-index: 999997;
+  box-shadow:
+    0 0 10px rgba(212, 190, 228, 0.2),
+    inset 0 0 10px rgba(155, 126, 189, 0.05);
+}
+
+/* 3 dashed segments on ring1 via clip trick */
+.cc-ring::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 1px dashed rgba(155, 126, 189, 0.35);
+  animation: cc-spin-r 2s linear infinite;
+}
+.cc-ring::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 190, 228, 0.12);
+  animation: cc-spin 4s linear infinite;
+}
+@keyframes cc-spin   { to { rotate:  360deg; } }
+@keyframes cc-spin-r { to { rotate: -360deg; } }
+
+/* ══════════════════
+   RING 2 — mid lag
+══════════════════ */
+.cc-ring2 {
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(155, 126, 189, 0.3);
+  z-index: 999995;
+}
+
+/* orbit dot on ring2 */
+.cc-ring2::before {
+  content: '';
+  position: absolute;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #D4BEE4;
+  box-shadow: 0 0 10px rgba(212, 190, 228, 1), 0 0 20px rgba(155, 126, 189, 0.7);
+  top: -2.5px; left: 50%;
+  transform: translateX(-50%);
+}
+
+/* second orbit dot at 180° */
+.cc-ring2::after {
+  content: '';
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: #9B7EBD;
+  box-shadow: 0 0 8px rgba(155, 126, 189, 0.9);
+  bottom: -1.5px; left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ══════════════════
+   RING 3 — outer ghost
+══════════════════ */
+.cc-ring3 {
+  width: 90px;
+  height: 90px;
+  border: 1px solid rgba(155, 126, 189, 0.12);
+  z-index: 999994;
+  opacity: 0.4;
+  animation: cc-breathe 3s ease-in-out infinite;
+}
+.cc-ring3::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(155, 126, 189, 0.04) 0%, transparent 70%);
+}
+@keyframes cc-breathe {
+  0%, 100% { box-shadow: 0 0 0px  rgba(155, 126, 189, 0);    }
+  50%       { box-shadow: 0 0 24px rgba(155, 126, 189, 0.18); }
+}
+
+/* ══════════════════
+   COMET TRAILS
+══════════════════ */
+.cc-trail {
+  width: 6px;
+  height: 6px;
+  z-index: 999993;
+  opacity: 0;
+  background: radial-gradient(
+    circle,
+    rgba(232, 213, 255, 0.9) 0%,
+    rgba(155, 126, 189, 0.5) 50%,
+    transparent 100%
+  );
+  box-shadow: 0 0 6px rgba(212, 190, 228, 0.7);
+}
+
+/* ══════════════════
+   BURST PARTICLES
+══════════════════ */
+.cc-burst {
+  width: 5px;
+  height: 5px;
+  z-index: 999992;
+  opacity: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(212, 190, 228, 0.8) 40%,
+    rgba(155, 126, 189, 0.4) 100%
+  );
+  box-shadow:
+    0 0 6px  rgba(255, 255, 255, 0.9),
+    0 0 12px rgba(212, 190, 228, 0.6);
+}
+
+/* ══════════════════
+   HOVER LABEL
+══════════════════ */
+.cc-label {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  padding: 6px 14px;
+  background: rgba(17, 8, 32, 0.9);
+  border: 1px solid rgba(212, 190, 228, 0.3);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #E8D5FF;
+  white-space: nowrap;
+  z-index: 999998;
+  transform: translate(20px, -140%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 14px rgba(155, 126, 189, 0.2);
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* ── Mobile: restore cursor ── */
+@media (hover: none) and (pointer: coarse) {
+  *, *::before, *::after { cursor: auto !important; }
+  .cc-dot, .cc-ring, .cc-ring2, .cc-ring3,
+  .cc-chroma, .cc-trail, .cc-burst, .cc-label { display: none !important; }
+}
